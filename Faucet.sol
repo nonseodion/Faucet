@@ -1,41 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.4.18;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "./Token.sol";
+import "./Ownable.sol";
 
-
-contract Superfun is ERC20 {
-    address public faucet;
-    modifier onlyFaucet(){
-        require(msg.sender == faucet, "Superfun: Only owner can call");
-        _;
-    }
-    
-    constructor(address _faucet) ERC20("Superfun", "SFUN") {
-        faucet = _faucet;
-    }
-    
-    function mint(address to, uint256 amount) public onlyFaucet {
-        _mint(to, amount);
-    }
-}
-
-contract HtmlCoin is ERC20 {
-    address public faucet;
-    modifier onlyFaucet(){
-        require(msg.sender == faucet, "HtmlCoin: Only owner can call");
-        _;
-    }
-    
-    constructor(address _faucet) ERC20("HtmlCoin", "HTML") {
-        faucet = _faucet;
-    }
-    
-    function mint(address to, uint256 amount) public onlyFaucet {
-        _mint(to, amount);
-    }
-}
 
 contract Faucet is Ownable {
     HtmlCoin public htmlCoin;
@@ -63,21 +31,21 @@ contract Faucet is Ownable {
         _;
     }
     
-    constructor(){
+    constructor() public{
         htmlCoin = new HtmlCoin(address(this));
         superfun = new Superfun(address(this));
         FaucetCooler = block.timestamp - 10 seconds;
     }
     
     function drip() public FaucetCooled senderCooled {
-        htmlCoin.transfer(msg.sender, 3 * 10**18);
-        superfun.transfer(msg.sender, 1 * 10**18);
+        htmlCoin.transfer(msg.sender, 3 * 10**9);
+        superfun.transfer(msg.sender, 1 * 10**9);
         updateFaucet();
     }
     
     function mint(uint am1, uint am2) public  onlyOwner {
-        (bool success1, ) = address(htmlCoin).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am1));
-        (bool success2, ) = address(superfun).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am2));
+        bool success1 = address(htmlCoin).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am1));
+        bool success2 = address(superfun).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am2));
         require(success1 && success2, "Faucet: Mint was unsuccessful");
     }
     

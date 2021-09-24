@@ -6,6 +6,9 @@ import "./Ownable.sol";
 
 
 contract Faucet is Ownable {
+    event Mint(address  owner, uint am1, uint am2);
+    event Drip( address receiver);
+    
     HtmlCoin public htmlCoin;
     Superfun public superfun;
     
@@ -41,12 +44,14 @@ contract Faucet is Ownable {
         htmlCoin.transfer(msg.sender, 3 * 10**9);
         superfun.transfer(msg.sender, 1 * 10**9);
         updateFaucet();
+        emit Drip(msg.sender);
     }
     
     function mint(uint am1, uint am2) public  onlyOwner {
         bool success1 = address(htmlCoin).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am1));
         bool success2 = address(superfun).call(abi.encodeWithSignature("mint(address,uint256)", address(this), am2));
         require(success1 && success2, "Faucet: Mint was unsuccessful");
+        emit Mint(msg.sender, am1, am2);
     }
     
     function updateFaucet() private {

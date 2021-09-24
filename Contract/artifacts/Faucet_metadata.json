@@ -144,6 +144,40 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "am1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "am2",
+						"type": "uint256"
+					}
+				],
+				"name": "Mint",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "receiver",
+						"type": "address"
+					}
+				],
+				"name": "Drip",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"name": "previousOwner",
 						"type": "address"
@@ -192,9 +226,9 @@
 	},
 	"sources": {
 		"Faucet.sol": {
-			"keccak256": "0xb3afff101405b6fd2ee96f361d5bc3d6d67d10453c016abbd99600907e54e124",
+			"keccak256": "0xe257484248e492280c47f1ec41fb6a0f58936cd722b13e56193c7c545abcadba",
 			"urls": [
-				"bzzr://86d82121beee566407667d905c4eb72dd6fbd30a505a9b913277263933daba60"
+				"bzzr://f98878c181c73bab4ab5eea7727d64064177adfdd25699d586994076ba94a5ad"
 			]
 		},
 		"Ownable.sol": {

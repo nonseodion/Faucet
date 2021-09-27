@@ -226,9 +226,9 @@
 	},
 	"sources": {
 		"Faucet.sol": {
-			"keccak256": "0xe257484248e492280c47f1ec41fb6a0f58936cd722b13e56193c7c545abcadba",
+			"keccak256": "0xa3da3f25aa6f424df8fb94cdad2f2bd11bef38ebeac9d271406194502c12c33a",
 			"urls": [
-				"bzzr://f98878c181c73bab4ab5eea7727d64064177adfdd25699d586994076ba94a5ad"
+				"bzzr://325e49bc1a0d4e8085a820f0ba1a598667d2b8b04f7993e9c01a3a1f272464fa"
 			]
 		},
 		"Ownable.sol": {

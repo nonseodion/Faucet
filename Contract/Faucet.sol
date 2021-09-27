@@ -41,8 +41,8 @@ contract Faucet is Ownable {
     }
     
     function drip() public FaucetCooled senderCooled {
-        htmlCoin.transfer(msg.sender, 3 * 10**9);
-        superfun.transfer(msg.sender, 1 * 10**9);
+        htmlCoin.transfer(msg.sender, 3 * 10**8);
+        superfun.transfer(msg.sender, 1 * 10**8);
         updateFaucet();
         emit Drip(msg.sender);
     }

@@ -1,8 +1,8 @@
 export default function useConstants () {
   return {
     HTML: "0xbeDf0DC459b04b7AffF19952d6f111B5D9D4dCfE",
-    SFUN: "0x022b284082b62B91dBb59e11068f15Ef924a1560",
     Faucet: "0xf147C86551E03860a8f008c782977aD45363DD89",
+    SFUN: "0x022b284082b62B91dBb59e11068f15Ef924a1560",
     HRC20ABI: [
       {
         "constant": true,
